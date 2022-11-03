@@ -158,7 +158,7 @@ const Asidebar=() =>{
                             />
                             <Item
                                 title='Invoice Balances'
-                                to='/'
+                                to='/invoices'
                                 icon={<ReceiptOutlinedIcon/>}
                                 selected={selected}
                                 setSelected={setSelected}

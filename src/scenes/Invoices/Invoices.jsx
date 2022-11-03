@@ -1,7 +1,7 @@
 import React from 'react'
 import {Box, Typography, useTheme} from '@mui/material';
 import {DataGrid} from "@mui/x-data-grid";
-import { mockDataTeam } from "../../data/mockData";
+import { mockDataInvoices } from "../../data/mockData";
 
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
@@ -10,10 +10,10 @@ import { tokens } from '../../Theme/theme';
 import ContentHeader from '../../components/Contentheaders/ContentHeaders';
 
 
-const Team = ()=>{
+const Invoices = ()=>{
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  console.log(mockDataTeam);
+  console.log(mockDataInvoices);
   const columns = 
   [
     {
@@ -27,56 +27,39 @@ const Team = ()=>{
       cellClassName:"name-column--cell"
     },
     {
-      field:"age", 
-      headerName:"Age",
+      field:"cost", 
+      headerName:"Cost",
       type:"number",
       headerAlign:"left",
-      align:"left"},
+      align:"left",
+      renderCell:(params)=>(
+        <Typography
+            color={colors.greenAccent[500]}
+        >${params.row.cost}</Typography>
+      )
+    },
     {
       field:"phone", 
       headerName:"Phone",
       flex:1,
     },
     {
-      field:"email", 
-      headerName:"Email",
-      flex:1,
-    },
+        field:"email", 
+        headerName:"Email",
+        flex:1,
+      },
     {
-      field:"access", 
-      headerName:"Access Level",
+      field:"date", 
+      headerName:"Date",
       flex:1,
-      renderCell:({row:{access}})=>{
-        return(
-          <Box 
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent = "center"
-            backgroundColor = {
-              access === "admin" 
-                ? colors.greenAccent[600]
-                : colors.greenAccent[700]
-            }
-            borderRadius = "4px" 
-          >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon/>}
-            {access === "manager" && <SecurityOutlinedIcon/>} 
-            {access === "user" && <LockOpenOutlinedIcon/>} 
-            <Typography color={colors.grey[100]} sx={{ml:"5px"}} >
-              {access  }
-            </Typography> 
-          </Box>
-        )
-      }
     },
+   
 
   ]
 
   return (
     <Box m="20px">
-      <ContentHeader title='TEAM' subtitle="Managing the Team Members"/>
+      <ContentHeader title='Invoices' subtitle="List of Invoices"/>
 
       <Box
         m="40px 0 0 0" 
@@ -98,13 +81,17 @@ const Team = ()=>{
           "& .MuiDataGrid-footerContainer":{
             borderTop: "none",
             backgroundColor: colors.blueAccent[700]
-          }
+           },
+           "& .MuiCheckbox-root":{
+                color:`${colors.greenAccent[200]} !important`
+           }
 
         }}
       >
       <DataGrid
-          rows={mockDataTeam}
+          rows={mockDataInvoices}
           columns = {columns}
+          checkboxSelection
         />
       </Box>
      
@@ -113,4 +100,4 @@ const Team = ()=>{
   )
 }
 
-export default Team;
+export default Invoices;

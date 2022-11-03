@@ -8,12 +8,12 @@ import Dashboard from './scenes/dashboard';
 import Asidebar from './scenes/global/Sidebar/Sidebar';
 
 import Team from './scenes/Team/team';
-// import Invoices from './scenes/Invoice/invoices';
-// import Contacts  from './scenes/Contact/contacts';
+import Invoices from './scenes/Invoices/Invoices';
+import Contacts  from './scenes/Contacts/Contacts';
 // import Bar from './scenes/Chart/bar';
 // import Line from './scenes/Chart/line';
 // import Pie from './scenes/Chart/pie';
-// import Form from './scenes/Forms/form';
+import Form from './scenes/Forms/Form';
 // import FAQ from './scenes/Faq/faq';
 // import Geography from './scenes/Chart/geography';
 // import Calendar from './scenes/Calendar/calendar';
@@ -38,14 +38,14 @@ function App() {
                <Routes>
                   <Route path='/' element={<Dashboard/>} />
                   <Route path='/team' element={<Team/>} />
-                  {/* <Route path='/contacts' element={<Contacts/>} /> */}
+                  <Route path='/contacts' element={<Contacts/>} />
                   {/* <Route path='/bar' element={<Bar/>} /> */}
                   {/* <Route path='/line' element={<Line/>} /> */}
                   {/* <Route path='/pie' element={<Pie/>} /> */}
-                  {/* <Route path='/form' element={<Form/>} /> */}
+                  <Route path='/form' element={<Form/>} />
                   {/* <Route path='/faq' element={<FAQ/>} /> */}
                   {/* <Route path='/geography' element={<Geography/>} /> */}
-                  {/* <Route path='/inovices' element={<Invoices/>} /> */}
+                  <Route path='/invoices' element={<Invoices/>} />
                   {/* <Route path='/calendar' element={<Calendar/>} /> */}
                </Routes>
           </div>
